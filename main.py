@@ -15,32 +15,35 @@ rating = parse("On {when}, I felt {what}, because {why}, at {where}, rated {rati
 
 
 entry_list = [what, why, where, rating]
-when_date = convertDate(when)
+when_date = parseDate.convertDate(when)
 
-journal = dict()
-try:
-	with (open('journal.txt','rb')) as openfile:
-		print "something"
-		while True:
-			try:
-				#journal = pickle.load(openfile)
-				journal.update(pickle.load(openfile))
-			except EOFError:
-				break
-except IOError:
-	print "We're here"
-	with (open('journal.txt','wb')) as f:
+def add_entry(entry_components, when_datetime):
+	journal = dict()
+	try:
+		with (open('journal.txt','rb')) as openfile:
+			print "something"
+			while True:
+				try:
+					#journal = pickle.load(openfile)
+					journal.update(pickle.load(openfile))
+				except EOFError:
+					break
+	except IOError:
+		print "We're here"
+		with (open('journal.txt','wb')) as f:
+			pickle.dump(journal,f)
+
+	print journal
+
+	journal.update({when_datetime:entry_components})
+	with open('journal.txt', 'wb') as f:
 		pickle.dump(journal,f)
 
-print journal
-
-journal.update({when:entry_list})
-with open('journal.txt', 'wb') as f:
-	pickle.dump(journal,f)
-
-print '\n'
-print journal
+	print '\n'
+	print journal
 
 # sort dictionary in the chronological order
+
+add_entry(entry_list, when_date)
 
 

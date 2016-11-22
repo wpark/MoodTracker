@@ -3,7 +3,7 @@ import datetime
 import re
 
 OPT_TODAY = frozenset(['today'])
-OPT_YESTERDAY = frozenset(['yesterday'])
+OPT_YESTERDAY = frozenset(['yesterday', 'previous day'])
 
 def convertDate(date_string):
 	today = datetime.date.today()
