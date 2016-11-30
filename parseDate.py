@@ -7,7 +7,8 @@ OPT_YESTERDAY = frozenset(['yesterday', 'previous day'])
 
 def convertDate(date_string):
 	today = datetime.date.today()
-	date_string = date_string.strip().lower().replace('/',' ').replace('-', ' ').replace(',',' ')
+	date_string = date_string.strip().lower()
+	#.replace('/',' ').replace('-', ' ').replace(',',' ')
 	
 	if date_string in OPT_TODAY:
 		return datetime.date(today.year, today.month, today.day)
