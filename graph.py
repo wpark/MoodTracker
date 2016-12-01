@@ -4,7 +4,8 @@ import collections
 import time, datetime
 #import main
 
-exDict = collections.OrderedDict([(datetime.date(2016, 11, 8), ['another test', 'another test', 'another test', '3']), (datetime.date(2016, 11, 9), ['print', 'print', 'print', '9']), (datetime.date(2016, 11, 10), ['this', 'this', 'this', '4']), (datetime.date(2016, 11, 11), ['nothing', 'nothing', 'nothing', '3']), (datetime.date(2016, 11, 12), ['this', 'this', 'this', '5']), (datetime.date(2016, 11, 14), ['test2', 'test2', 'test2', '1']), (datetime.date(2016, 11, 15), ['test3', 'test3', 'test3', '2']), (datetime.date(2016, 11, 18), ['test', 'test', 'test', '0']), (datetime.date(2016, 11, 22), ['stressed', 'i had a lot of homework', 'school', '2']), (datetime.date(2016, 11, 23), ['bored', 'i had to pack', 'school', '3']), (datetime.date(2016, 11, 24), ['a little bad', 'i was getting sick', 'school', '3']), (datetime.date(2016, 11, 25), ['excited', 'it was thanksgiving', 'oregon', '8']), (datetime.date(2016, 11, 26), ['full', 'I ate too much to eat', 'portland', '6']), (datetime.date(2016, 11, 27), ['tired', 'i was travelling', 'oregon', '5']), (datetime.date(2016, 11, 28), ['sick', 'I have a flu', 'everywhere', '1']), (datetime.date(2016, 11, 30), ['still sick', 'i still have the flu', 'school', '3'])])
+# get the dictionary from main
+exDict = collections.OrderedDict([(datetime.date(2016, 11, 11), ['test2', 'test2', '8', 'g']), (datetime.date(2016, 11, 12), ['weird', 'weird', '1.1', 'nc']), (datetime.date(2016, 11, 13), ['blue', 'blue', '1', 'nc']), (datetime.date(2016, 11, 27), ['test', 'test', '6', 'r']), (datetime.date(2016, 11, 29), ['this', 'this', '6', 'c']), (datetime.date(2016, 11, 30), ['success', 'success', '7', 'y'])])
 
 def drawGraph(dictionary):
 	N = len(dictionary)
@@ -13,7 +14,7 @@ def drawGraph(dictionary):
     #y-axis  
 	ratings = []
 	for k, v in dictionary.items():
-		ratings.append(int(v[3]))
+		ratings.append(float(v[2]))
 
 	ratings = tuple(ratings)
 	print ratings
@@ -21,7 +22,7 @@ def drawGraph(dictionary):
 	#x-axis
 	dates = []
 	for k, v in dictionary.items():
-		dates.append(k.strftime('%m-%d'))
+		dates.append(k.strftime('%m-%d-%Y'))
 
 	dates = tuple(dates)
 
@@ -29,14 +30,29 @@ def drawGraph(dictionary):
 	width = 0.35
 	opacity = 0.4
 
-	p = plt.bar(ind, ratings, width, color = "#AAF0D1")
+
+	p = plt.bar(ind, ratings, width, color = "#AAF0D1", edgecolor = "#AAF0D1")
+
 	#p = plt.bar(ind, ratings, width, alpha = opacity, color = "r")
-		#edgecolor = 'b')
+
+
+	#colors
+	colors = []
+	for k, v in dictionary.items():
+		colors.append(v[3])
+	print colors
+
+	for i in range(N):
+		if colors[i] == 'nc':
+			pass
+		else:
+			p[i].set_color(colors[i])
+
 	# p[0].set_color('y')
 	# p[1].set_color('m') #magenta
 	# p[2].set_color('c') #cyan
 
-	plt.xticks(ind + width, dates)
+	plt.xticks(ind + width/2, dates)
 
 
 	plt.ylabel('Rating')
@@ -45,5 +61,7 @@ def drawGraph(dictionary):
 	
 	plt.title("Mood Tracker")
 	plt.show()
+
+
 
 drawGraph(exDict)
