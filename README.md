@@ -30,7 +30,7 @@ The text menu should look as the following.
 
 `On {date}, I felt {what}, because {reason}, rated {number for rating}, color {characters},`
 
-* Date can be written in any of the forms below to say Dec 12th 2014.
+* Date can be written in any of the formats below to say Dec 12th 2014.
 
   12 04 14, 12-04-14, 12/04/14, 12 04 2014, 12-04-2014, 12/04/2014, 2014 12 04, 2014-12-04, 2014/12/04, December 12 2014, Dec 12 2014, 14 12 04, 14-12-04, 14/12/04, Dec 12 14, December 12 14
 
@@ -39,6 +39,8 @@ The text menu should look as the following.
   Date can also be written as one of the following:
 
   today, yesterday, previous day, a day ago
+  
+  Lastly, you also have the option of, in the place of date, saying n days ago, where n is an integer between 1 and 30.
 
 * Please note that in the place of {number for rating}, you must enter a number between 0 and 10, 0 being extremely bad and 10 being perfect. It can be an integer or a decimal.
 
