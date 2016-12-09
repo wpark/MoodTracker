@@ -5,7 +5,8 @@ import time, datetime
 #import main
 
 # get the dictionary from main
-exDict = collections.OrderedDict([(datetime.date(2016, 11, 11), ['test2', 'test2', '8', 'g']), (datetime.date(2016, 11, 12), ['weird', 'weird', '1.1', 'nc']), (datetime.date(2016, 11, 13), ['blue', 'blue', '1', 'nc']), (datetime.date(2016, 11, 27), ['test', 'test', '6', 'r']), (datetime.date(2016, 11, 29), ['this', 'this', '6', 'c']), (datetime.date(2016, 11, 30), ['success', 'success', '7', 'y'])])
+#exDict = collections.OrderedDict([(datetime.date(2016, 11, 11), ['test2', 'test2', '8', 'g']), (datetime.date(2016, 11, 12), ['weird', 'weird', '1.1', 'nc']), (datetime.date(2016, 11, 13), ['blue', 'blue', '1', 'nc']), (datetime.date(2016, 11, 27), ['test', 'test', '6', 'r']), (datetime.date(2016, 11, 29), ['this', 'this', '6', 'c']), (datetime.date(2016, 11, 30), ['success', 'success', '7', 'y'])])
+#journalEntries = 
 
 def drawGraph(dictionary):
 	N = len(dictionary)
@@ -35,7 +36,6 @@ def drawGraph(dictionary):
 
 	#p = plt.bar(ind, ratings, width, alpha = opacity, color = "r")
 
-
 	#colors
 	colors = []
 	for k, v in dictionary.items():
@@ -63,5 +63,8 @@ def drawGraph(dictionary):
 	plt.show()
 
 
+# def listmode(dictionary):
+# 	n = len(dictionary)
 
-drawGraph(exDict)
+# 	for k, v in dictionary.items():
+		

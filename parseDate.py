@@ -2,18 +2,18 @@ import time
 import datetime
 import re
 
-OPT_TODAY = frozenset(['today'])
-OPT_YESTERDAY = frozenset(['yesterday', 'previous day'])
+TODAY = frozenset(['today'])
+YESTERDAY = frozenset(['yesterday', 'previous day', 'a day ago'])
 
 def convertDate(date_string):
 	today = datetime.date.today()
 	date_string = date_string.strip().lower().replace('/',' ').replace('-', ' ').replace(',',' ')
 	
-	if date_string in OPT_TODAY:
+	if date_string in TODAY:
 		return datetime.date(today.year, today.month, today.day)
-	elif date_string in OPT_YESTERDAY:
+	elif date_string in YESTERDAY:
 		return datetime.date(today.year, today.month, today.day) - datetime.timedelta(days=1)
-	elif re.search(r'(\d{1,5}|a) days? ago', date_string):
+	elif re.search(r'(\d{1,30}|a) days? ago', date_string):
 		return n_days(date_string)
 	else:
 		return date(date_string)
@@ -23,7 +23,7 @@ def n_days(date_string):
     date_string string in format "(int) day(s) ago"
     """
     today = datetime.date.today()
-    match = re.match(r'(\d{1,5}|a) days? ago', date_string)
+    match = re.match(r'(\d{1,30}|a) days? ago', date_string)
     groups = match.groups()
     if groups:
         decrement = groups[0]

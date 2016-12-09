@@ -3,29 +3,47 @@ import pickle
 from parse import *
 import parseDate
 import collections
+import graph
 
 # global variable dictionary
+global orderedJournal
 orderedJournal = dict()
-
 
 availableCol = frozenset(['b', 'g', 'r', 'c', 'm', 'y', 'k', 'w', 'nc'])
 
-entry = str(raw_input("journal: "))
+# entry = str(raw_input("journal: "))
 
-when = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['when']
-what = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['what']
-why = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['why']
-# How to make "where" optional? 
-#where = parse("On {when}, I felt {what}, because {why}, at {where}, rated {rating}, color {color}", entry).named['where']
-rating = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['rating']
+# when = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['when']
+# what = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['what']
+# why = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['why']
+# # How to make "where" optional? 
+# rating = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['rating']
 
-# b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, w = white
-color = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['color']
+# # b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, w = white
+# color = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['color']
 
-color = color.lower().strip()
-entry_list = [what, why, rating, color]
-when_date = parseDate.convertDate(when)
-# check if the rating is a number
+# color = color.lower().strip()
+# entry_list = [what, why, rating, color]
+# when_date = parseDate.convertDate(when)
+# # check if the rating is a number
+
+def startEntry():
+	entry = str(raw_input("journal: "))
+
+	when = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['when']
+	what = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['what']
+	why = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['why']
+	# How to make "where" optional? 
+	rating = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['rating']
+	# b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, w = white
+	color = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['color']
+
+	color = color.lower().strip()
+	entry_list = [what, why, rating, color]
+	when_date = parseDate.convertDate(when)
+
+	return checkColorDate(entry_list, when_date, color)
+
 
 
 def checkColorDate(entry_components, when_datetime, color_string):
@@ -49,7 +67,6 @@ def add_entry(entry_components, when_datetime):
 				except EOFError:
 					break
 	except IOError:
-		print "We're here"
 		with (open('journal.txt','wb')) as f:
 			pickle.dump(journal,f)
 
@@ -64,12 +81,33 @@ def add_entry(entry_components, when_datetime):
 	with open('journal.txt', 'wb') as f:
 		pickle.dump(orderedJournal,f)
 
+def createGraph():
+	global orderedJournal
+	if len(orderedJournal) == 0:
+		print "empty dictionary"
 
+		journal = dict()
+		try:
+			with (open('journal.txt','rb')) as openfile:
+				while True:
+					try:
+						journal.update(pickle.load(openfile))
+					except EOFError:
+						break
+		except IOError:
+			with (open('journal.txt','wb')) as f:
+				pickle.dump(journal,f)
+		
+		#print journal
 
-#add_entry(entry_list, when_date)
-checkColorDate(entry_list, when_date, color)
-print '\n'
-print orderedJournal
-# print orderedJournal.items()[1]
+		# sort dictionary in the chronological order
+		#global orderedJournal
+		orderedJournal = collections.OrderedDict(sorted(journal.items()))
+		#print '\n'
+		#print orderedJournal
+	else:
+		print "not empty"
 
+	#global orderedJournal	
+	graph.drawGraph(orderedJournal)
 
