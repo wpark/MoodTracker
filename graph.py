@@ -10,7 +10,6 @@ import time, datetime
 
 def drawGraph(dictionary):
 	N = len(dictionary)
-	#print N
     
     #y-axis  
 	ratings = []
@@ -18,7 +17,7 @@ def drawGraph(dictionary):
 		ratings.append(float(v[2]))
 
 	ratings = tuple(ratings)
-	print ratings
+	# print ratings
 
 	#x-axis
 	dates = []
@@ -48,9 +47,6 @@ def drawGraph(dictionary):
 		else:
 			p[i].set_color(colors[i])
 
-	# p[0].set_color('y')
-	# p[1].set_color('m') #magenta
-	# p[2].set_color('c') #cyan
 
 	plt.xticks(ind + width/2, dates)
 
