@@ -16,7 +16,6 @@ To use the DSL, follow the instructions below. It is assumed that your computer 
 
 The text menu should look as the following.
 
------------------------------- MENU ------------------------------
 
 1. Write a journal entry
 
@@ -25,7 +24,7 @@ The text menu should look as the following.
 3. List to see your previous entries
 
 4. Exit
--------------------------------------------------------------------
+
 
 When you are to write a journal entry, it has to be in the syntax of the DSL.
 
