@@ -16,7 +16,6 @@ The text menu should look as the following:
 3. List to see your previous entries
 4. Exit
 -------------------------------------------------------------------
-
 When you are to write a journal entry, it has to be in the syntax of the DSL.
 
 `On {date}, I felt {what}, because {reason}, rated {number for rating}, color {characters},`
