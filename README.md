@@ -50,7 +50,7 @@ The text menu should look as the following.
 
   b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, nc = default
 
-  The default color is set to be Maic mint, #AAF0D1.
+  The default color is set to be Magic mint (#AAF0D1).
 
 
 * On the graph that shows the trend of your moods, you'll see an icon on the bottom left which you can click to save the graph on your computer.
