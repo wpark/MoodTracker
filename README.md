@@ -32,23 +32,23 @@ When you are to write a journal entry, it has to be in the syntax of the DSL.
 
 * Date can be written in any of the forms below to say Dec 12th 2014.
 
-12 04 14, 12-04-14, 12/04/14, 12 04 2014, 12-04-2014, 12/04/2014, 2014 12 04, 2014-12-04, 2014/12/04, December 12 2014, Dec 12 2014, 14 12 04, 14-12-04, 14/12/04, Dec 12 14, December 12 14
+  12 04 14, 12-04-14, 12/04/14, 12 04 2014, 12-04-2014, 12/04/2014, 2014 12 04, 2014-12-04, 2014/12/04, December 12 2014, Dec 12 2014, 14 12 04, 14-12-04, 14/12/04, Dec 12 14, December 12 14
 
-If you don't specify the year, it will be automatically set to the current year.
+  If you don't specify the year, it will be automatically set to the current year.
 
-Date can also be written as one of the following:
+  Date can also be written as one of the following:
 
-today, yesterday, previous day, a day ago
+  today, yesterday, previous day, a day ago
 
 * Please note that in the place of {number for rating}, you must enter a number between 0 and 10, 0 being extremely bad and 10 being perfect. It can be an integer or a decimal.
 
 * Please also note that each component ends with a comma, including the last one where you specify a color of a bar in the bar graph.
 
-In the place of {characters}, you have to enter one of the following to specify a color for a bar.
+  In the place of {characters}, you have to enter one of the following to specify a color for a bar.
 
-b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, nc = default
+  b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, nc = default
 
-The default color is set to be Maic mint, #AAF0D1.
+  The default color is set to be Maic mint, #AAF0D1.
 
 
 
