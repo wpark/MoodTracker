@@ -51,4 +51,10 @@ When you are to write a journal entry, it has to be in the syntax of the DSL.
   The default color is set to be Maic mint, #AAF0D1.
 
 
+* On the graph that shows the trend of your moods, you'll see an icon on the bottom left which you can click to save the graph on your computer.
+
+
+Author: Woky(Won Kyoung) Park
+
+
 
