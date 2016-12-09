@@ -18,4 +18,10 @@ The text menu should look as the following:
 -------------------------------------------------------------------
 
 When you are to write a journal entry, it has to be in the syntax of the DSL.
-`On {date}, I felt {what}, because {reason}, rated {number for rating}, color {character},`
+
+`On {date}, I felt {what}, because {reason}, rated {number for rating}, color {characters},`
+
+Please note that each component ends with a comma, including the last one where you specify a color of a bar in the bar graph.
+In the place of {characters}, you have to enter one of the following to specify a color for a bar.
+b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, nc = default
+The default color is set to be Maic mint, #AAF0D1.
