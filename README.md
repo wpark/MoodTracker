@@ -26,7 +26,7 @@ The text menu should look as the following.
 4. Exit
 
 
-When you are to write a journal entry, it has to follow the syntax of the DSL. See below.
+* When you are to write a journal entry, it has to follow the syntax of the DSL. See below.
 
 `On {date}, I felt {what}, because {reason}, rated {number for rating}, color {characters},`
 
