@@ -3,7 +3,7 @@ import pickle
 from parse import *
 import parseDate
 import collections
-import graph
+import view
 
 # global variable dictionary
 global orderedJournal
@@ -12,6 +12,23 @@ orderedJournal = dict()
 availableCol = frozenset(['b', 'g', 'r', 'c', 'm', 'y', 'k', 'w', 'nc'])
 
 # entry_list = [what, why, rating, color]
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+ 
+    # try:
+    #     import unicodedata
+    #     unicodedata.numeric(s)
+    #     return True
+    # except (TypeError, ValueError):
+    #     pass
+
+    return False
+
 
 def startEntry():
 	entry = str(raw_input("journal: "))
@@ -33,14 +50,14 @@ def startEntry():
 
 
 def errorHandling(entry_components, when_datetime, color_string):
-	if (color_string in availableCol) and (when_datetime != None) and (entry_components[2].isdigit()):
+	if (color_string in availableCol) and (when_datetime != None) and (is_number(entry_components[2])):
 		add_entry(entry_components, when_datetime)
 	# check if the input for date is in a right format.
 	elif (when_datetime == None):
 		print ("Error: Please check if the date is in a right format.")
-	# check if the input for rating is a digit
-	elif (entry_components[2].isdigit() != True):
-		print ("Error: Please check if the rating is a digit.")
+	# check if the input for rating is a number
+	elif (is_number(entry_components[2]) != True):
+		print ("Error: Please check if the rating is a number.")
 	# check if the character input for color is one of the available colors
 	else:
 		print ("Error: Please make sure the chracter(s) you entered for color is one of the below." + "\n" + "b, g, r, c, m, y, k, w, nc")
@@ -100,9 +117,41 @@ def createGraph():
 		print "not empty"
 		pass
 
-	#global orderedJournal
-	print orderedJournal	
-	graph.drawGraph(orderedJournal)
+	#print orderedJournal	
+	view.drawGraph(orderedJournal)
+
+
+def createList():
+	global orderedJournal
+	if len(orderedJournal) == 0:
+		#print "empty dictionary"
+
+		journal = dict()
+		try:
+			with (open('journal.txt','rb')) as openfile:
+				while True:
+					try:
+						journal.update(pickle.load(openfile))
+					except EOFError:
+						break
+		except IOError:
+			with (open('journal.txt','wb')) as f:
+				pickle.dump(journal,f)
+		
+		#print journal
+
+		# sort dictionary in the chronological order
+		#global orderedJournal
+		orderedJournal = collections.OrderedDict(sorted(journal.items()))
+		#print '\n'
+		print orderedJournal
+	else:
+		print "not empty"
+		pass
+
+	#print orderedJournal	
+	view.listmode(orderedJournal)
+
 
 
 
@@ -111,8 +160,8 @@ def createGraph():
 def print_menu():       
     print 30 * "-" , "MENU" , 30 * "-"
     print "1. Write a journal entry"
-    print "2. Graph that shows the trend of your moods from previous entries"
-    print "3. Menu Option 3"
+    print "2. Graph to see the trend of your moods from previous entries"
+    print "3. List to see your previous entries"
     print "4. Exit"
     print 67 * "-"
 
@@ -132,7 +181,8 @@ while loop:
         createGraph()
         ## You can add your code or functions here
     elif choice==3:
-        print "list mode"
+        print "Creating a list..."
+        createList()
         ## You can add your code or functions here
     elif choice==4:
         print "Exiting..."

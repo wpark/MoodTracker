@@ -2,11 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import collections
 import time, datetime
-#import main
+
 
 # get the dictionary from main
 #exDict = collections.OrderedDict([(datetime.date(2016, 11, 11), ['test2', 'test2', '8', 'g']), (datetime.date(2016, 11, 12), ['weird', 'weird', '1.1', 'nc']), (datetime.date(2016, 11, 13), ['blue', 'blue', '1', 'nc']), (datetime.date(2016, 11, 27), ['test', 'test', '6', 'r']), (datetime.date(2016, 11, 29), ['this', 'this', '6', 'c']), (datetime.date(2016, 11, 30), ['success', 'success', '7', 'y'])])
-#journalEntries = 
 
 def drawGraph(dictionary):
 	N = len(dictionary)
@@ -59,8 +58,15 @@ def drawGraph(dictionary):
 	plt.show()
 
 
-# def listmode(dictionary):
-# 	n = len(dictionary)
+def listmode(dictionary):
+ 	n = 1
 
-# 	for k, v in dictionary.items():
+ 	for key, value in dictionary.items():
+ 		print str(n) + ". " + str(key)  
+ 		print "What: "+ str(value[0])
+ 		print "Why: " + str(value[1])
+ 		print "Rating: " + str(value[2])
+ 		print '\n'
+ 		n += 1
+
 		
