@@ -9,7 +9,7 @@ To use the DSL, follow the instructions below. It is assumed that your computer 
 4. Enter "python main.py", once you're in the MoodTracker folder.
 5. You'll be prompted with a text menu and be able to enter a number to choose one of the options.
 
-The text menu should look as the following:
+The text menu should look as the following.
 ------------------------------ MENU ------------------------------
 1. Write a journal entry
 2. Graph to see the trend of your moods from previous entries
