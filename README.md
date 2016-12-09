@@ -30,7 +30,7 @@ The text menu should look as the following.
 
 `On {date}, I felt {what}, because {reason}, rated {number for rating}, color {characters},`
 
-* Date can be written in any of the forms below to say Dec 12th 2014.
+* Date can be written in any of the formats below to say Dec 12th 2014.
 
   12 04 14, 12-04-14, 12/04/14, 12 04 2014, 12-04-2014, 12/04/2014, 2014 12 04, 2014-12-04, 2014/12/04, December 12 2014, Dec 12 2014, 14 12 04, 14-12-04, 14/12/04, Dec 12 14, December 12 14
 
