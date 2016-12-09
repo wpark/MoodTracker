@@ -9,7 +9,7 @@ import view
 global orderedJournal
 orderedJournal = dict()
 
-availableCol = frozenset(['b', 'g', 'r', 'c', 'm', 'y', 'k', 'w', 'nc'])
+availableCol = frozenset(['b', 'g', 'r', 'c', 'm', 'y', 'k', 'nc'])
 
 # entry_list = [what, why, rating, color]
 
@@ -31,7 +31,13 @@ def is_number(s):
 
 
 def startEntry():
-	entry = str(raw_input("journal: "))
+	print "\n"
+	print "Follow the rules laid out below to write your journal."
+	print "On {date}, I felt {what}, because {reason}, rated {number for rating}, color {character},"
+	print "And the characters you can enter to choose a color for a bar in the graph are the following:"
+	print "b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, nc = default"
+
+	entry = str(raw_input("Enter your journal: "))
 
 	when = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['when']
 	what = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['what']
