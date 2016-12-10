@@ -42,7 +42,6 @@ def startEntry():
 	when = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['when']
 	what = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['what']
 	why = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['why']
-	# How to make "where" optional? 
 	rating = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['rating']
 	# b = blue, g = green, r = red, c = cyan, m = magenta, y = yellow, k = black, w = white
 	color = parse("On {when}, I felt {what}, because {why}, rated {rating}, color {color},", entry).named['color']
@@ -111,11 +110,8 @@ def createGraph():
 		except IOError:
 			with (open('journal.txt','wb')) as f:
 				pickle.dump(journal,f)
-		
-		#print journal
 
 		# sort dictionary in the chronological order
-		#global orderedJournal
 		orderedJournal = collections.OrderedDict(sorted(journal.items()))
 		#print '\n'
 		#print orderedJournal
@@ -143,16 +139,13 @@ def createList():
 		except IOError:
 			with (open('journal.txt','wb')) as f:
 				pickle.dump(journal,f)
-		
-		#print journal
 
 		# sort dictionary in the chronological order
-		#global orderedJournal
 		orderedJournal = collections.OrderedDict(sorted(journal.items()))
 		#print '\n'
-		print orderedJournal
+		#print orderedJournal
 	else:
-		print "not empty"
+		# Dictionary not empty
 		pass
 
 	#print orderedJournal	

@@ -4,7 +4,6 @@ import collections
 import time, datetime
 
 
-# get the dictionary from main
 #exDict = collections.OrderedDict([(datetime.date(2016, 11, 11), ['test2', 'test2', '8', 'g']), (datetime.date(2016, 11, 12), ['weird', 'weird', '1.1', 'nc']), (datetime.date(2016, 11, 13), ['blue', 'blue', '1', 'nc']), (datetime.date(2016, 11, 27), ['test', 'test', '6', 'r']), (datetime.date(2016, 11, 29), ['this', 'this', '6', 'c']), (datetime.date(2016, 11, 30), ['success', 'success', '7', 'y'])])
 
 def drawGraph(dictionary):
@@ -16,7 +15,6 @@ def drawGraph(dictionary):
 		ratings.append(float(v[2]))
 
 	ratings = tuple(ratings)
-	# print ratings
 
 	#x-axis
 	dates = []
@@ -27,20 +25,17 @@ def drawGraph(dictionary):
 
 	ind = np.arange(N)
 	width = 0.35
-	opacity = 0.4
 
 
 	p = plt.bar(ind, ratings, width, color = "#AAF0D1", edgecolor = "#AAF0D1")
-
-	#p = plt.bar(ind, ratings, width, alpha = opacity, color = "r")
 
 	#colors
 	colors = []
 	for k, v in dictionary.items():
 		colors.append(v[3])
-	print colors
 
 	for i in range(N):
+		# default color
 		if colors[i] == 'nc':
 			pass
 		else:
